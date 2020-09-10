@@ -1,0 +1,150 @@
+from sense_hat import SenseHat
+sense=SenseHat()
+import time
+import random
+
+r=(255,0,0)
+yellow = (255,255,0)
+g =(0,255,0)
+blue=(0,21,255)
+
+# r1 = random.randint(0,255)
+# r2 = random.randint(0,255)
+# r3 = random.randint(0,255)
+# if r1 != r2 and r1 != r3 and r2 != r3:
+#     k = (r1,r2,r3)
+n= (0,0,0)
+orientationlist = [0,90,180,270]
+colour = [r, yellow, g, blue]
+c = random.choice(colour)
+# if z == yellow:
+#     c == green
+# else:
+#     c = yellow
+
+# acceleration = sense.get_accelerometer_raw()
+# x = round(acceleration['x'],2)
+# y = round(acceleration['y'],2)
+# z = acceleration['z']
+# print(x,y,z)
+# # z = acceleration['z']
+
+count = 0
+
+
+
+while count < 3:
+    
+    image_pixels= [n,n,n,n,n,n,n,n,
+                n,n,n,g,n,n,n,n,
+                n,n,g,g,g,n,n,n,
+                n,g,n,g,n,g,n,n,
+                n,n,n,g,n,n,n,n,
+                n,n,n,g,n,n,n,n,
+                n,n,n,g,n,n,n,n,
+                n,n,n,n,n,n,n,n
+                ]
+
+
+    sense.set_pixels(image_pixels)
+    randomorientation = random.choice(orientationlist)
+    sense.set_rotation(randomorientation)
+    
+    time.sleep(1)
+    
+    acceleration = sense.get_accelerometer_raw()
+    x = round(acceleration['x'],2)
+    y = round(acceleration['y'],2)
+
+    if randomorientation == 0 and y > 0.5:
+        image_pixels= [n,n,n,n,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,g,g,g,n,n,n,
+                        n,g,n,g,n,g,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,n,n,n,n,n
+                        ]
+
+    
+        sense.set_pixels(image_pixels)
+        sense.set_rotation(randomorientation)
+        time.sleep(1)
+        sense.clear()
+        continue
+         
+    elif randomorientation == 90 and x < -0.5:
+        image_pixels= [n,n,n,n,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,g,g,g,n,n,n,
+                        n,g,n,g,n,g,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,n,n,n,n,n
+                        ]
+
+    
+        sense.set_pixels(image_pixels)
+        sense.set_rotation(randomorientation)
+        time.sleep(1)
+        sense.clear()
+        continue
+         
+    elif randomorientation == 180 and y < - 0.5:
+        image_pixels= [n,n,n,n,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,g,g,g,n,n,n,
+                        n,g,n,g,n,g,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,n,n,n,n,n
+                        ]
+
+    
+        sense.set_pixels(image_pixels)
+        sense.set_rotation(randomorientation)
+        time.sleep(1)
+        sense.clear()
+        continue
+        
+    elif randomorientation == 270 and x > 0.5:
+        image_pixels= [n,n,n,n,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,g,g,g,n,n,n,
+                        n,g,n,g,n,g,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,g,n,n,n,n,
+                        n,n,n,n,n,n,n,n
+                        ]
+
+    
+        sense.set_pixels(image_pixels)
+        sense.set_rotation(randomorientation)
+        time.sleep(1)
+        sense.clear()
+        continue
+        
+        
+    else:
+        image_pixels= [n,n,n,n,n,n,n,n,
+                        n,n,n,r,n,n,n,n,
+                        n,n,r,r,r,n,n,n,
+                        n,r,n,r,n,r,n,n,
+                        n,n,n,r,n,n,n,n,
+                        n,n,n,r,n,n,n,n,
+                        n,n,n,r,n,n,n,n,
+                        n,n,n,n,n,n,n,n
+                        ]
+
+    
+        sense.set_pixels(image_pixels)
+        sense.set_rotation(randomorientation)
+        time.sleep(1)
+        count += 1
+        triesleft = 3 - count
+        print("Number of tries left:" + str(triesleft))
+        continue
